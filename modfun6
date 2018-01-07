@@ -1,0 +1,10 @@
+defmodule Chop do 
+  def median(x..y), do: div (x + y), 2
+  def guess(a, x..y) do 
+    IO.puts "It is #{median x..y}"
+    make_guess(a, x..y, median x..y)
+  end
+  def make_guess(a, _.._, g) when g == a, do: "found"
+  def make_guess(a, x.._, g) when g > a, do: guess a, x..g-1
+  def make_guess(a, _..y, g) when g < a, do: guess a, g+1..y
+ end
